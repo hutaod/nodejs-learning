@@ -1,0 +1,21 @@
+{
+  "name": "@ht1131589588/vue-auto-router-cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "htvue": "./bin/htvue"
+  },
+  "author": {
+    "name": "ht1131589588",
+    "email": "1131589588@qq.com"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [],
+  "license": "ISC"
+}
