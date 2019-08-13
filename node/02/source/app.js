@@ -1,6 +1,6 @@
-const KKB = require('./kkb')
+const Koa = require('./Koa')
 
-const app = new KKB()
+const app = new Koa()
 
 // app.use((req, res) => {
 //   res.writeHead(200)
