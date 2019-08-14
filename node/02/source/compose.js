@@ -3,6 +3,7 @@ const square = z => z * z
 
 // const compose = (fn1, fn2) => (...args) => fn2(fn1(...args))
 
+// 同步compose
 // const compose = (...[first, ...others]) => (...args) => {
 //   let ret = first(...args)
 //   others.forEach(fn => {
@@ -18,6 +19,7 @@ const square = z => z * z
 // // const fn = (x, y) => square(add(x, y))
 // console.log(fn(1, 2))
 
+// 异步compose
 function compose(middlewares) {
   return function() {
     // 执行第1个
