@@ -44,7 +44,8 @@
 
   console.log('查询成功', JSON.stringify(ret, null, 2))
   console.log(await fruits.count())
-  // const res = await fruits.find()
+  const res = await fruits.find().toArray()
+  console.log('查询成功all:', JSON.stringify(res, null, 2))
 
   client.close()
 })()

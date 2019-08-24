@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <button @click="toLogin">github登录</button>
+      <div v-if="userInfo">
+        Hello {{ userInfo.name }}
+        <img :src="userInfo.avatar_url" />
+      </div>
+    </div>
+
+    <script>
+      axios.interceptors.request.use(
+        config => {
+          const token = localStorage.getItem('token')
+          if (token) {
+            config.headers.common['Authorization'] = 'Bearer ' + token
+          }
+          return config
+        },
+        err => Promise.reject(err)
+      )
+      // axios.interceptors.response.use(config => {
+
+      // },err => Promise.reject(err))
+      new Vue({
+        el: '#app',
+        data() {
+          return {
+            userInfo: null
+          }
+        },
+        methods: {
+          async toLogin() {
+            window.open('/auth/github/login', '_blank')
+            const interverId = setInterval(() => {
+              console.log('等待认真中。。。')
+              if (window.localStorage.getItem('authSuccess')) {
+                clearInterval(interverId)
+                window.localStorage.removeItem('authSuccess')
+                this.getUser()
+              }
+            }, 1000)
+          },
+          async getUser() {
+            axios.get('/auth/github/userinfo').then(res => {
+              console.log(res.data)
+              const { code } = res.data
+              if (code === 1) {
+                console.log('异常')
+                window.localStorage.removeItem('authSuccess')
+              } else {
+                this.userInfo = res.data
+              }
+            })
+          }
+        }
+      })
+    </script>
+  </body>
+</html>
