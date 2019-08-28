@@ -39,16 +39,16 @@
       },
       methods: {
         async login() {
-          await axios.post('/login', {
+          await axios.post('/users/login', {
             username: this.username,
             password: this.password
           })
         },
         async logout() {
-          await axios.post('/logout')
+          await axios.post('/users/logout')
         },
         async getUser() {
-          await axios.get('/getUser')
+          await axios.get('/users/getUser')
         }
       }
     });
