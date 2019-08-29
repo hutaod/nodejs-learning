@@ -43,11 +43,13 @@
 
       axios.interceptors.response.use(
         response => {
+          console.log(response)
           app.logs.push(JSON.stringify(response.data))
           return response
         },
         err => {
-          app.logs.push(JSON.stringify(response.data))
+          console.log(err)
+          // app.logs.push(JSON.stringify(err.data))
           return Promise.reject(err)
         }
       )
@@ -60,7 +62,7 @@
         },
         methods: {
           async login() {
-            const res = await axios.post('/login-token', {
+            const res = await axios.post('/users/login-token', {
               username: this.username,
               password: this.password
             })
@@ -70,7 +72,7 @@
             localStorage.removeItem('token')
           },
           async getUser() {
-            await axios.get('/getUser-token')
+            await axios.get('/users/getUser-token')
           }
         }
       })
