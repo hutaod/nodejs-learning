@@ -29,7 +29,7 @@ class AppBootHook {
     await ctx.model.User.remove();
     // 初始化数据
     await ctx.service.user.create({
-      mobile: '13611388415',
+      mobile: '18086523212',
       password: '111111',
       realName: '老夏',
     });
