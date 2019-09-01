@@ -1,5 +1,5 @@
 {
-  "name": "egg",
+  "name": "server",
   "version": "1.0.0",
   "description": "",
   "private": true,
@@ -8,10 +8,13 @@
   },
   "dependencies": {
     "egg": "^2.15.1",
+    "egg-bcrypt": "^1.1.0",
+    "egg-jwt": "^3.1.6",
+    "egg-mongoose": "^3.2.0",
     "egg-scripts": "^2.11.0",
-    "egg-sequelize": "^5.2.0",
     "egg-swagger-doc-feat": "^2.2.13",
-    "mysql2": "^1.7.0"
+    "egg-validate": "^2.0.2",
+    "moment": "^2.24.0"
   },
   "devDependencies": {
     "autod": "^3.0.1",
@@ -26,8 +29,8 @@
     "node": ">=10.0.0"
   },
   "scripts": {
-    "start": "egg-scripts start --daemon --title=egg-server-egg",
-    "stop": "egg-scripts stop --title=egg-server-egg",
+    "start": "egg-scripts start --daemon --title=egg-server-server",
+    "stop": "egg-scripts stop --title=egg-server-server",
     "dev": "egg-bin dev",
     "debug": "egg-bin debug",
     "test": "npm run lint -- --fix && npm run test-local",
