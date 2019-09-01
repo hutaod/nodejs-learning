@@ -13,13 +13,14 @@ if (cluster.isMaster) {
   }
   // 监听异常
   cluster.on('death', function(worker) {
+    console.log('death')
     worker = cluster.fork()
     workers[worker.pid] = worker
   })
 } else {
   const app = require('./app')
   app.use(async (ctx, next) => {
-    console.log('worker', cluster.worker.id + ',Pid' + cluster.worker.pid)
+    console.log('worker', cluster.worker.id + ',PID' + process.pid)
 
     next()
   })
@@ -27,9 +28,12 @@ if (cluster.isMaster) {
 }
 
 process.on('SIGTERM', function() {
+  // 关闭所有进程
+  console.log('退出')
   for (let pid in workers) {
     process.kill(pid)
   }
+  // 关闭主进程
   process.exit(0)
 })
 
