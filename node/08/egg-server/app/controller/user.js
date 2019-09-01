@@ -103,6 +103,7 @@ class UserController extends Controller {
    */
   async list() {
     const { ctx, service } = this;
+    // console.log(service === ctx.service);
     // 组装参数
     const payload = ctx.query;
     // 调用 Service 进行业务处理
