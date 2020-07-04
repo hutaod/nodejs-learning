@@ -1,6 +1,6 @@
 {
   "name": "@ht1131589588/souge-player",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "CommandLine Tool for music player",
   "main": "index.js",
   "scripts": {
