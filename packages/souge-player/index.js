@@ -21,12 +21,16 @@ const emitter = new Emitter()
 
 // 搜索后触发 afterSearch，它回调里面继续触发 choose 事件
 emitter.on('afterSearch', function(data, q) {
-  if (!data || !data.result || !data.result.songs) {
+  if (
+    !data ||
+    !data.result ||
+    !data.result.songs ||
+    data.result.songs.length === 0
+  ) {
     console.log(`没有搜索到 ${q} 的相关结果`)
     return process.exit(1)
   }
-  const songs = data.result.songs
-  this.emit('choose', songs)
+  this.emit('choose', data.result.songs)
 })
 
 // 在歌曲被选中后触发 afterSearch，它回调里面继续触发 find 事件

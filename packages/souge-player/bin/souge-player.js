@@ -4,7 +4,7 @@ const pkg = require('../package.json')
 const emitter = require('../index')
 
 function printVersion() {
-  console.log(`ltsn ${pkg.version}`)
+  console.log(`souge-player ${pkg.version}`)
   process.exit()
 }
 
