@@ -27,5 +27,6 @@
   "dependencies": {
     "inquirer": "^7.3.0",
     "player": "^0.6.1"
-  }
+  },
+  "gitHead": "2c608baa8b811f913c7f5a7bbe02dde075c4eaef"
 }
