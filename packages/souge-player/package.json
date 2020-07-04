@@ -1,5 +1,5 @@
 {
-  "name": "@ht1131589588/souge-player",
+  "name": "souge-player",
   "version": "1.0.2",
   "description": "CommandLine Tool for music player",
   "main": "index.js",
@@ -28,5 +28,5 @@
     "inquirer": "^7.3.0",
     "player": "^0.6.1"
   },
-  "gitHead": "2c608baa8b811f913c7f5a7bbe02dde075c4eaef"
+  "gitHead": "342ebdcd17fe1a1f647f920e3240fc66a8928b9b"
 }
