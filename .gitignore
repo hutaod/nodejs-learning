@@ -1,10 +1,6 @@
-# dependencies
-node_modules/
-
-# example
-/example
-
-# misc
 .DS_Store
-
-package-lock.json
+npm-debug.log
+node_modules
+yarn-error.log
+.vscode
+.eslintrc.json
