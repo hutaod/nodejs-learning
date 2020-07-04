@@ -33,6 +33,7 @@ emitter.on('afterSearch', function(data, q) {
 emitter.on('affterChoose', function(answers, songs) {
   const song = songs.find((song, i) => names(song, i) === answers.song)
   if (song && song.id) {
+    console.log('歌曲信息拉取中...')
     this.emit('find', song.id)
   }
 })
@@ -41,6 +42,9 @@ emitter.on('affterChoose', function(answers, songs) {
 emitter.on('afterFind', function(songs) {
   if (songs[0] && songs[0].url) {
     this.emit('play', songs[0].url)
+  } else {
+    console.log('歌曲或歌曲地址不存在', songs[0])
+    process.exit(2)
   }
 })
 
