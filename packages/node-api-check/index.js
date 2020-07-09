@@ -1,10 +1,10 @@
 const https = require('https')
 const Table = require('cli-table')
 const cheerio = require('cheerio')
+const compareVersions = require("compare-versions")
 const link = (v, p) => `https://nodejs.org/dist/${v}/docs/api/${p}`
 
-async function crawlPage(version, path = '') {
-  const url = link(version, path)
+function request(url) {
   return new Promise((resolve, reject) => {
     https
       .get(url, res => {
@@ -22,31 +22,36 @@ async function crawlPage(version, path = '') {
   })
 }
 
-function findApiList(html) {
+function crawlPage(version, path = '') {
+  const url = link(version, path)
+  return request(url)
+}
+
+function findApiList (html) {
   const $ = cheerio.load(html)
   const items = $('#column2 ul')
     .eq(1)
     .find('a')
   const list = []
 
-  items.each(item => {
+  items.each(function(item) {
     list.push({
-      api: $(item).text(),
-      path: $(item).attr('href'),
+      api: $(this).text(),
+      path: $(this).attr('href')
     })
   })
 
   return list
 }
 
-function findDeprecated(html) {
+function findDeprecatedList(html) {
   const $ = cheerio.load(html)
   const items = $('.stability_0')
   const list = []
 
-  items.each(item => {
+  items.each(function () {
     list.push(
-      $(item)
+      $(this)
         .text()
         .slice(0, 30)
     )
@@ -55,13 +60,16 @@ function findDeprecated(html) {
   return list
 }
 
-async function crawlNode(version) {
+async function crawlNode (version) {
   const homePage = await crawlPage(version)
   const apiList = findApiList(homePage)
-  let deprecatedMap = {}
+  let deprecatedMap = {
+    // 'Command Line Options': ['']
+  }
   const promises = apiList.map(async item => {
     const apiPage = await crawlPage(version, item.path)
-    const list = findDeprecated(apiPage)
+    const list = findDeprecatedList(apiPage)
+
     return { api: item.api, list: list }
   })
 
@@ -74,42 +82,42 @@ async function crawlNode(version) {
   return deprecatedMap
 }
 
-async function runTask(v1, v2, v3, v4) {
-  const results = await Promise.all([
-    crawlNode(v1),
-    crawlNode(v2),
-    crawlNode(v3),
-    crawlNode(v4),
-  ])
-
-  const table = new Table({
-    head: ['API Version', v1, v2, v3, v4],
-  })
-
-  const v1Map = results[0]
-  const v2Map = results[1]
-  const v3Map = results[2]
-  const v4Map = results[3]
-  const keys = Object.keys(v4Map)
-  keys.forEach(key => {
-    if (
-      (v1Map[key] && v1Map[key].length) ||
-      (v2Map[key] && v2Map[key].length) ||
-      (v3Map[key] && v3Map[key].length) ||
-      (v4Map[key] && v4Map[key].length)
-    ) {
-      // console.log(v1Map[key], v2Map[key], v3Map[key], v4Map[key])
-      table.push([
-        key,
-        (v1Map[key] || []).join('\n'),
-        (v2Map[key] || []).join('\n'),
-        (v3Map[key] || []).join('\n'),
-        (v4Map[key] || []).join('\n'),
-      ])
-    }
-  })
-
-  console.log(table.toString())
+async function checkNodeApi(...versions) {
+  if(!versions.length) return
+  try {
+    const results = await Promise.all(versions.map(v => crawlNode(v)))
+  
+    const table = new Table({
+      head: ['API Version', ...versions],
+    })
+  
+    const length = results.length
+  
+    const keys = Object.keys(results[length - 1])
+    keys.forEach(key => {
+      if (
+        results.some(result => result[key] && result[key].length)
+      ) {
+        table.push([
+          key,
+          ...results.map(result => (result[key] || []).join('\n'))
+        ])
+      }
+    })
+  
+    console.log(table.toString())
+  } catch (error) {
+    console.log(error)
+  }
 }
 
-runTask('v4.9.1', 'v6.14.4', 'v8.11.4', 'v10.13.0')
+async function run(v) {
+  const data = await request("https://nodejs.org/dist/index.json")
+  const ltsList = JSON.parse(data).filter(node => {
+    const cp = v ? compareVersions(node.version, 'v' + v + '.0.0') >= 0 : true
+    return node.lts && cp
+  }).map(lt => lt.version)
+  checkNodeApi(...ltsList.slice(0, 10))
+}
+
+run(12)
