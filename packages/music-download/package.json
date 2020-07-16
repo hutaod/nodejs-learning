@@ -1,0 +1,30 @@
+{
+  "name": "music-download",
+  "version": "1.0.0",
+  "description": "CommandLine Tool for download music",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "souge-player": "bin/music-download.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ht1131589588/nodejs-learning.git",
+    "directory": "packages/music-download"
+  },
+  "keywords": [
+    "Node",
+    "LTS"
+  ],
+  "author": "ht1131589588",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ht1131589588/nodejs-learning/issues"
+  },
+  "homepage": "https://github.com/ht1131589588/nodejs-learning#readme",
+  "dependencies": {
+    "inquirer": "^7.3.0"
+  }
+}
