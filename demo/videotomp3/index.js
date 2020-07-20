@@ -16,7 +16,7 @@ class VideoTool extends EventEmitter {
     this.filename = filename
   }
 
-  mp3() {
+  mp4Tomp3() {
     // 创建 FFMPEG 进程
     this.ffmpeg = spawn('ffmpeg', mp3Args)
 
@@ -33,7 +33,7 @@ class VideoTool extends EventEmitter {
     })
   }
 
-  mp4() {
+  downloadMp4() {
     let stream = fs.createWriteStream(this.filename)
     request.get(this.url, {
       headers: {
@@ -48,11 +48,16 @@ class VideoTool extends EventEmitter {
       console.log('download finished')
     })
   }
+
+  combineMp3ToMp4(mp4File, mp3File) {
+    // 创建 FFMPEG 进程
+    const ffmpeg = spawn('ffmpeg', mp3Args)
+  }
 }
 
 const video = 'http://vt1.doubanio.com/201810291353/4d7bcf6af730df6d9b4da321aa6d7faa/view/movie/M/402380210.mp4'
 const m1 = new VideoTool(video, 'audio.mp3')
-// const m2 = new VideoTool(video, __dirname + '/video.mp4')
+const m2 = new VideoTool(video, 'video.mp4')
 
-m1.mp3()
-// m2.mp4()
+// m1.mp4Tomp3()
+m2.downloadMp4()
