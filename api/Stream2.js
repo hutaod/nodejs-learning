@@ -1,6 +1,6 @@
-const fs = require("fs")
-const path = require("path")
-const http = require("http")
+const fs = require('fs')
+const path = require('path')
+const http = require('http')
 
 // // fs.createReadStream(path.resolve(__dirname, "../source/avatar.png")).pipe(fs.createWriteStream("./img-pipe.png"))
 // Demo 1
@@ -32,8 +32,8 @@ const http = require("http")
 // ws._write = function(chunk, ev, cb) {
 //   n++
 //   console.log(`chunk ${n}: ${chunk.toString()}`)
-//   // chunk 1: I 
-//   // chunk 2: Love 
+//   // chunk 1: I
+//   // chunk 2: Love
 //   // chunk 3: Coding!
 //   cb()
 // }
@@ -42,53 +42,53 @@ const http = require("http")
 // rs.pipe(ws)
 
 // Dome 3 定制流
-// const { Readable, Writable, Transform } = require("stream")
+const { Readable, Writable, Transform } = require('stream')
 
-// class ReadStream extends Readable {
-//   constructor() {
-//     super()
-//   }
+class ReadStream extends Readable {
+  constructor() {
+    super()
+  }
 
-//   _read() {
-//     rs.push('I ')
-//     rs.push('Love ')
-//     rs.push('Coding!\n')
-//     rs.push(null)
-//   }
-// }
+  _read() {
+    rs.push('I ')
+    rs.push('Love ')
+    rs.push('Coding!\n')
+    rs.push(null)
+  }
+}
 
-// class WriteStream extends Writable {
-//   constructor() {
-//     super()
-//     this._storage = Buffer.from('')
-//   }
-//   _write(chunk, encode, cb) {
-//     console.log(chunk.toString())
-//     cb()
-//   }
-// }
+class WriteStream extends Writable {
+  constructor() {
+    super()
+    this._storage = Buffer.from('')
+  }
+  _write(chunk, encode, cb) {
+    console.log(chunk.toString())
+    cb()
+  }
+}
 
-// class TransformStream extends Transform {
-//   constructor() {
-//     super()
-//     this._storage = Buffer.from('')
-//   }
+class TransformStream extends Transform {
+  constructor() {
+    super()
+    this._storage = Buffer.from('')
+  }
 
-//   _transform(chunk, encode, cb) {
-//     this.push(chunk)
-//     cb()
-//   }
+  _transform(chunk, encode, cb) {
+    this.push(chunk)
+    cb()
+  }
 
-//   _flush (cb) {
-//     this.push('On Yeah!')
-//     cb()
-//   }
-// }
+  _flush(cb) {
+    this.push('On Yeah!')
+    cb()
+  }
+}
 
-// const rs = new ReadStream()
-// const ws = new WriteStream()
-// const ts = new TransformStream()
+const rs = new ReadStream()
+const ws = new WriteStream()
+const ts = new TransformStream()
 
-// rs.pipe(ts).pipe(ws)
+rs.pipe(ts).pipe(ws)
 
 // Test 实现一个MP4转MP3工具
