@@ -1,5 +1,5 @@
 {
-  "name": "createServer",
+  "name": "http-server",
   "version": "1.0.0",
   "description": "node server cli",
   "main": "index.js",

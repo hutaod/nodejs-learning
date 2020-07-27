@@ -4,7 +4,7 @@
 const pkg = require('../package.json')
 const createServer = require('../index')
 
-function printHelp (code = 0) {
+function printHelp(code = 0) {
   const lines = [
     '',
     '  Usage:',
@@ -16,25 +16,20 @@ function printHelp (code = 0) {
     '',
     '  Examples:',
     '    $ music-download Hello',
-    ''
+    '',
   ]
 
   console.log(lines.join('\n'))
   process.exit(code)
 }
 
-function printVersion () {
+function printVersion() {
   console.log(`${pkg.name} ${pkg.version}`)
   process.exit()
 }
 
 // 启动函数
 const main = argv => {
-  // 1. 判断命令是否存在
-  if (!argv || argv.length === 0) {
-    printHelp(1)
-  }
-
   // 获取解析后的参数，获取一个就移出一个
   const getArg = function () {
     let args = argv.shift()
@@ -45,7 +40,7 @@ const main = argv => {
   const params = {}
 
   while (argv.length) {
-    // 2. 获取合法命令，直到所有命令行参数都解析完毕或者程序退出
+    // 获取合法命令，直到所有命令行参数都解析完毕或者程序退出
     const [key, val] = getArg()
     switch (key) {
       // 打印版本号
