@@ -1,7 +1,7 @@
 {
-  "name": "http-server",
+  "name": "koa-server",
   "version": "1.0.0",
-  "description": "node server cli",
+  "description": "koa server cli",
   "main": "index.js",
   "bin": {
     "createServer": "./bin/createServer.js"
