@@ -1,0 +1,23 @@
+{
+  "name": "ffmpeg-tool",
+  "version": "1.0.0",
+  "description": "ffmpeg tool",
+  "main": "index.js",
+  "bin": {
+    "mergeMedia": "./bin/mergeMedia.js"
+  },
+  "scripts": {
+    "test": "node test/index.js"
+  },
+  "keywords": [
+    "video",
+    "audio",
+    "ffmpeg"
+  ],
+  "author": "hutao",
+  "license": "MIT",
+  "dependencies": {
+    "arg": "^4.1.3",
+    "single-line-log": "^1.1.2"
+  }
+}
