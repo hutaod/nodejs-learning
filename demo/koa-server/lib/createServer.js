@@ -25,9 +25,14 @@ async function createServer({ wwwroot = '', port = 7000 }) {
 
   // 收集数据
   app.use(async (ctx, next) => {
-    const done = await next()
-    if (done) {
-      // 数据收集
+    await next()
+    if (ctx.status === 200 || ctx.status === 304) {
+      const ip = ctx.header['X-Real-IP'] || ''
+      // 记录文件下载次数，和是否有命中缓存
+      db.get('visits')
+        .push({ path: ctx.path, ip, isCache: ctx.status === 304 })
+        .write()
+      db.update('count', n => n + 1).write()
     }
   })
 

@@ -84,3 +84,4 @@ console.log(href)
 const href2 = url.resolve('https://juejin.com/book', '/3')
 console.log(href2)
 // 'https://juejin.com/book/3'
+console.log(path.normalize('/hello//haha'))

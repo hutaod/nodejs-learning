@@ -1,104 +1,45 @@
 {
   "visits": [
     {
-      "ip": ""
-    },
-    {
-      "ip": ""
-    },
-    {
-      "ip": ""
-    },
-    {
-      "ip": ""
-    },
-    {
-      "ip": ""
-    },
-    {
-      "ip": ""
-    },
-    {
-      "ip": ""
-    },
-    {
-      "ip": ""
-    },
-    {
-      "ip": ""
-    },
-    {
-      "ip": ""
-    },
-    {
-      "ip": ""
-    },
-    {
-      "ip": ""
-    },
-    {
-      "ip": ""
-    },
-    {
-      "ip": ""
-    },
-    {
+      "path": "/",
       "ip": "",
-      "user": "a",
-      "page": "1",
-      "action": "click"
+      "isCache": false
     },
     {
+      "path": "/example/",
       "ip": "",
-      "user": "a",
-      "page": "1",
-      "action": "click"
+      "isCache": false
     },
     {
+      "path": "/",
       "ip": "",
-      "user": "a",
-      "page": "1",
-      "action": "click"
+      "isCache": false
     },
     {
-      "ip": "::1",
-      "user": "a",
-      "page": "1",
-      "action": "click"
-    },
-    {
+      "path": "/",
       "ip": "",
-      "user": "a",
-      "page": "1",
-      "action": "click"
+      "isCache": false
     },
     {
+      "path": "/",
       "ip": "",
-      "user": "a",
-      "page": "1",
-      "action": "click"
+      "isCache": false
     },
     {
+      "path": "/",
       "ip": "",
-      "user": "a",
-      "page": "1",
-      "action": "click"
+      "isCache": false
     },
     {
+      "path": "/example/",
       "ip": "",
-      "user": "a",
-      "page": "1",
-      "action": "click"
+      "isCache": false
     },
     {
+      "path": "/example/index.html",
       "ip": "",
-      "user": "a",
-      "page": "1",
-      "action": "click"
-    },
-    {
-      "ip": ""
+      "isCache": true
     }
   ],
-  "count": 23
+  "count": 31
 }

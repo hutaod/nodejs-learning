@@ -1,7 +1,11 @@
 const path = require('path')
 const fs = require('fs')
 const zlib = require('zlib')
+const pug = require('pug')
+const { promisify } = require('util')
 const mimeType = require('./utils/mimeType')
+
+const readdir = promisify(fs.readdir)
 
 /**
  * 创建静态服务器，拦截资源
@@ -15,7 +19,6 @@ function static(root) {
       try {
         done = await send(ctx, path.resolve(root))
       } catch (err) {
-        console.log(err)
         if (err.status !== 404) {
           throw err
         }
@@ -30,8 +33,17 @@ function static(root) {
 
 module.exports = static
 
+/**
+ * 发送资源到客户端
+ * @param {object} ctx koa ctx
+ * @param {string} root 静态服务器目录
+ */
 async function send(ctx, root) {
-  let pathname = ctx.path
+  // 格式化pathname
+  let pathname = path.normalize(ctx.path);
+  pathname = pathname.endsWith('/')
+    ? pathname.slice(0, pathname.length - 1)
+    : pathname
   // 获取文件路径
   const filePath = path.join(root, pathname)
   // 获取文件后缀
@@ -86,8 +98,28 @@ async function send(ctx, root) {
     }
   } else {
     // 2.2 文件夹类型则返回文件列表的html页面
+    const dirList = await readdir(filePath)
+    // 处理文件路径显示字符串
+    const fileList = dirList.map(file => {
+      // 判断文件类型，根绝不同类型返回的字符串不同
+      const stat = fs.statSync(path.join(filePath, file))
+      return `${pathname}/${file}${stat.isDirectory() ? '/' : ''}`
+    })
+    // 判断是否需要加入'../'，以返回上一级
+    if(pathname.length > 0) {
+      fileList.unshift('../')
+    }
+    // 读取pug模板，并生成html
+    var html = pug.renderFile(
+      path.resolve(__dirname, '../template/fileList.pug'),
+      {
+        pageTitle: pathname,
+        fileList,
+      }
+    )
+    // 把生成的html发送出去
+    ctx.body = html
   }
 
-  console.log(root, pathname, filePath, ext)
   return true
 }
