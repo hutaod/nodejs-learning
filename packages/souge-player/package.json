@@ -1,0 +1,32 @@
+{
+  "name": "souge-player",
+  "version": "1.0.3",
+  "description": "CommandLine Tool for music player",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "souge-player": "bin/souge-player.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ht1131589588/nodejs-learning.git",
+    "directory": "packages/souge-player"
+  },
+  "keywords": [
+    "Node",
+    "LTS"
+  ],
+  "author": "ht1131589588",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ht1131589588/nodejs-learning/issues"
+  },
+  "homepage": "https://github.com/ht1131589588/nodejs-learning#readme",
+  "dependencies": {
+    "inquirer": "^7.3.0",
+    "player": "^0.6.1"
+  },
+  "gitHead": "342ebdcd17fe1a1f647f920e3240fc66a8928b9b"
+}

@@ -1,0 +1,32 @@
+{
+  "name": "node-api-check",
+  "version": "1.0.3",
+  "description": "CommandLine Tool for check node api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "node-api-check": "bin/node-api-check.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ht1131589588/nodejs-learning.git",
+    "directory": "packages/node-api-check"
+  },
+  "keywords": [
+    "Node",
+    "API"
+  ],
+  "author": "ht1131589588",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ht1131589588/nodejs-learning/issues"
+  },
+  "homepage": "https://github.com/ht1131589588/nodejs-learning#readme",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "cli-table": "^0.3.1",
+    "compare-versions": "^3.6.0"
+  }
+}

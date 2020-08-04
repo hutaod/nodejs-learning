@@ -1,0 +1,28 @@
+{
+  "name": "nodejs-learning",
+  "version": "1.0.0",
+  "description": "nodejs学习笔记、总结",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "lerna": "^3.22.1",
+    "vuepress": "^1.5.2"
+  },
+  "scripts": {
+    "start": "vuepress dev docs",
+    "build": "vuepress build docs",
+    "publish": "lerna publish",
+    "bootstrap": "lerna bootstrap"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ht1131589588/nodejs-learning.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ht1131589588/nodejs-learning/issues"
+  },
+  "homepage": "https://github.com/ht1131589588/nodejs-learning#readme"
+}

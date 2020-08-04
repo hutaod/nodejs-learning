@@ -1,0 +1,40 @@
+{
+  "visits": [
+    {
+      "path": "/example/index.html",
+      "ip": "",
+      "isCache": true,
+      "count": 16
+    },
+    {
+      "path": "",
+      "ip": "",
+      "isCache": false,
+      "count": 8
+    },
+    {
+      "path": "/index.js",
+      "ip": "",
+      "isCache": false,
+      "count": 1
+    },
+    {
+      "path": "/template",
+      "ip": "",
+      "isCache": false,
+      "count": 2
+    },
+    {
+      "path": "/example",
+      "ip": "",
+      "isCache": false,
+      "count": 1
+    },
+    {
+      "path": "/node_modules",
+      "ip": "",
+      "isCache": false,
+      "count": 1
+    }
+  ]
+}

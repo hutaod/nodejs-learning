@@ -1,0 +1,16 @@
+{
+  "name": "http-server",
+  "version": "1.0.0",
+  "description": "node server cli",
+  "main": "index.js",
+  "bin": {
+    "createServer": "./bin/createServer.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.iblack7.com/G000016/L0-R2-T000016.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

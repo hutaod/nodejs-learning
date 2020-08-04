@@ -1,0 +1,22 @@
+{
+  "name": "koa-server",
+  "version": "1.0.0",
+  "description": "koa server cli",
+  "main": "index.js",
+  "bin": {
+    "createServer": "./bin/createServer.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.iblack7.com/G000016/L0-R2-T000016.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "koa": "^2.13.0",
+    "koa-router": "^9.1.0",
+    "lowdb": "^1.0.0",
+    "pug": "^3.0.0"
+  }
+}

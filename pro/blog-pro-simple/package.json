@@ -1,0 +1,17 @@
+{
+  "name": "blog-project",
+  "version": "1.0.0",
+  "description": "a blog",
+  "main": "./src/index.js",
+  "scripts": {
+    "dev": "node ./src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "koa": "^2.13.0",
+    "koa-router": "^9.1.0",
+    "pug": "^3.0.0"
+  }
+}

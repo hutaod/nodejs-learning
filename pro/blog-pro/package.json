@@ -1,0 +1,15 @@
+{
+  "name": "blog-project",
+  "version": "1.0.0",
+  "description": "a blog",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npm run dev:backend && dev:client",
+    "dev:server": "node ./server",
+    "dev:admin": "node ./admin/scripts",
+    "dev:client": "node ./client/scripts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

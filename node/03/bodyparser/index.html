@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script src="https://cdn.bootcss.com/axios/0.19.0/axios.min.js"></script>
+    <script>
+      async function init() {
+        axios.defaults.headers = {
+          'X-token': '123'
+        }
+        const res = await axios.post('/api/test', {
+          name: '123'
+        })
+        // const res = await axios.post('/api/test', 'a=1&b=3', {
+        //   headers: {
+        //     'Content-Type': 'application/x-www-form-urlencoded'
+        //   }
+        // })
+
+        console.log('data', res.data)
+        // document.writeln(`Response : ${JSON.stringify(res.data)}`)
+        // document.write(`Response : ${JSON.stringify(res.data)}`)
+        document.getElementById('app').innerHTML = JSON.stringify(res.data)
+        // 埋点
+        // const img = new Image()
+        // img.src = '/api/users?button=123'
+
+        // 跨域： 浏览器同源策略引起的接口调用问题
+      }
+      init()
+    </script>
+  </body>
+</html>
