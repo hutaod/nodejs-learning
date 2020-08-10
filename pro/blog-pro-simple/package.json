@@ -4,7 +4,7 @@
   "description": "a blog",
   "main": "./src/index.js",
   "scripts": {
-    "dev": "node ./src/index.js"
+    "dev": "node ./index.js"
   },
   "keywords": [],
   "author": "",
@@ -12,6 +12,7 @@
   "dependencies": {
     "koa": "^2.13.0",
     "koa-router": "^9.1.0",
+    "mongoose": "^5.9.28",
     "pug": "^3.0.0"
   }
 }
