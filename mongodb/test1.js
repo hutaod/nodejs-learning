@@ -14,13 +14,23 @@ var kittySchema = mongoose.Schema({
   name: String
 })
 
-// kittySchema.methods.speek = function () {
-//   var greeting = this.name
-//     ? "Meow name is " + this.name
-//     : "I don't have a name";
-//   console.log(greeting);
-// }
+kittySchema.methods.speek = function () {
+  var greeting = this.name
+    ? "Meow name is " + this.name
+    : "I don't have a name";
+  console.log(greeting);
+}
 
 var Kitten = mongoose.model("Kitten", kittySchema)
-var felyne = new Kitten({ name: 'Felyne' })
-console.log(felyne.name)
+// var felyne = new Kitten({ name: 'Felyne' })
+
+// var fluffy = new Kitten({ name: 'fluffy' })
+// felyne.save(function (err, felyne) {
+//   if (err) return console.error(err);
+//   console.log(felyne.name)
+// });
+
+Kitten.find({ name: 'fluffy' }, function (err, kittens) {
+  if (err) return console.error(err);
+  console.log(kittens);
+})
