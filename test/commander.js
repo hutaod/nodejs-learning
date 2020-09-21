@@ -26,9 +26,9 @@ class Option {
     // 变量测试忽略了<value，…>等，它们可能用于描述单个参数的自定义拆分
     this.variadic = /\w\.\.\.[>\]]$/.test(flags); // 该选项可以采用多个值。The option can take multiple values.
     this.mandatory = false; // 解析后该选项必须有值，这通常意味着必须在命令行中指定它。The option must have a value after parsing, which usually means it must be specified on command line.
-    const optionFlags = _parseOptionFlags(flags);
-    this.short = optionFlags.shortFlag;
-    this.long = optionFlags.longFlag;
+    const optionFlags = _parseOptionFlags(flags); // 解析设定的命令
+    this.short = optionFlags.shortFlag; // 短命令标识
+    this.long = optionFlags.longFlag; // 长命令标识
     this.negate = false;
     if (this.long) {
       this.negate = this.long.startsWith('--no-');
@@ -1712,7 +1712,7 @@ exports.CommanderError = CommanderError;
 
 /**
  * Camel-case the given `flag`
- *
+ * 转化-为驼峰命名
  * @param {string} flag
  * @return {string}
  * @api private
